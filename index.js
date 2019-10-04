@@ -12,7 +12,7 @@ server.use(helmet());
 server.use(cors());
 
 // Put routes here
-// server.use('/projects', projectRoutes);
+server.use('/api/projects', projectRoutes);
 server.use('/api/actions', actionRoutes);
 
 server.get('/', (req, res) => {
