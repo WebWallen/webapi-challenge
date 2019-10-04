@@ -28,4 +28,18 @@ router.post('/', (req, res) => {
         }))
 });
 
+router.get('/:id', (req, res) => {
+    Projects.get(req.params.id)
+        .then(project => {
+            if (project) {
+                res.status(200).json(project);
+            } else {
+                res.status(404).json({ message: 'No such project' })
+            }
+        })
+        .catch(err => res.status(500).json({
+            message: 'Error retrieving the project'
+        }))
+});
+
 module.exports = router;
