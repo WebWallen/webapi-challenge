@@ -60,4 +60,29 @@ router.delete('/:id', (req, res) => {
         }))
 })
 
+router.put('/:id', (req, res) => {
+    if (!req.body.notes || !req.body.description) {
+        res.status(400).json({
+            message: 'Provide notes and description.'
+        })
+    } else {
+        Actions.update(req.params.id, req.body)
+            .then(action => {
+                if (action) {
+                    res.status(200).json({
+                        ...req.body.id,
+                        id: req.params.id
+                    })
+                } else {
+                    res.status(404).json({
+                        message: 'No such action.'
+                    })
+                }
+            })
+            .catch(err => res.status(500).json({
+                message: 'Failed to update action.'
+            }))
+    }
+});
+
 module.exports = router;
