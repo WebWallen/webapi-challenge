@@ -42,6 +42,22 @@ router.get('/:id', (req, res) => {
         }))
 });
 
-
+router.delete('/:id', (req, res) => {
+    Actions.remove(req.params.id) 
+        .then(action => {
+            if (!action) {
+                res.status(404).json({
+                    message: 'No such action.'
+                })
+            } else {
+                res.status(200).json({
+                    message: 'Action removed.'
+                })
+            }
+        })
+        .catch(err => res.status(500).json({
+            message: 'Failed to remove action.'
+        }))
+})
 
 module.exports = router;
