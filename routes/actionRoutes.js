@@ -12,4 +12,20 @@ router.get('/', (req, res) => {
     }))
 });
 
+router.post('/', (req, res) => {
+    Actions.insert(req.body)
+        .then(action => {
+            if (!req.body.notes || !req.body.description) {
+                res.status(400).json({
+                    message: 'Need notes and description.'
+                })
+            } else {
+                res.status(201).json(action)
+            }
+        })
+        .catch(err => res.status(500).json({
+            message: 'Failed to save new action.'
+        }))
+});
+
 module.exports = router;
