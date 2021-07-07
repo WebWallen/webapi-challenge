@@ -26,13 +26,24 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+1. Middleware that's easy and convenient to add, such as Helmet (for security) and a logger (to automatically log data changes)
+2. Routing, which allows you to specify what actions you want to take place when a user visits a certain URL (route)
+
 - [ ] Describe Middleware?
+
+Already explained above, but it's basically an array of functions that can be added to your CRUD operations.
 
 - [ ] Describe a Resource?
 
+An area of your website that a user might wish to visit or update (i.e. a comments section within a blog post).
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+A response object (i.e. 200 or 201, which tell the user a website behaved as was expected). 400, 401, and 500 say it failed.
+
 - [ ] How can we partition our application into sub-applications?
+
+Create various route files that contain logic related to that specific area of the application or website.
 
 ## Project Setup
 
